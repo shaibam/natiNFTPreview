@@ -1,0 +1,26 @@
+{
+  "name": "teasers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "FFMPEG_PATH='ffmpeg/ffmpeg' FFPROBE_PATH='ffmpeg/ffprobe' node src/main.js",
+    "single": "FFMPEG_PATH='ffmpeg/ffmpeg' FFPROBE_PATH='ffmpeg/ffprobe' node src/single.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaibam/natiNFT.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shaibam/natiNFT/issues"
+  },
+  "homepage": "https://github.com/shaibam/natiNFT#readme",
+  "dependencies": {
+    "deepdash": "^5.3.9",
+    "fluent-ffmpeg": "^2.1.2",
+    "lodash": "^4.17.21",
+    "winston": "^3.3.3"
+  }
+}
