@@ -1,0 +1,70 @@
+const ffmpeg = require('fluent-ffmpeg');
+
+
+function mergeSounds(audioFilePath1, audioFilePath2) {
+    return new Promise((resolve, reject) => {
+        let command = ffmpeg();
+
+        command.on('start', (cmdline) => {
+            console.log(cmdline)
+        })
+
+        command.on('end', (cmdline) => {
+            console.log('done')
+            resolve()
+        })
+
+        command
+            .input(audioFilePath1)
+            .input(audioFilePath2)
+            .complexFilter('amix=inputs=2')
+            .output('./mergedSounds.mp3')
+            .save('./out.mp3');
+    })
+}
+
+function concatSounds(audioFilePath1, audioFilePath2) {
+    return new Promise((resolve, reject) => {
+        let command = ffmpeg();
+
+        command.on('start', (cmdline) => {
+            console.log(cmdline)
+        })
+
+        command.on('end', (cmdline) => {
+            console.log('done')
+            resolve()
+        })
+
+        command
+            .input(audioFilePath1)
+            .input(audioFilePath2)
+            .mergeToFile('./concatSound.mp3', './');
+    })
+}
+
+function makeVideo(videoFilePath, audioFilePath, outputFilePath) {
+    return new Promise((resolve, reject) => {
+        let command = ffmpeg();
+
+        command.on('start', (cmdline) => {
+            console.log(cmdline)
+        })
+
+        command.on('end', (cmdline) => {
+            console.log('done')
+            resolve()
+        })
+
+        command
+            .input(videoFilePath)
+            .input(audioFilePath)
+            .videoCodec('copy')
+            .outputOptions(['-map 0:v:0', '-map 1:a:0'])
+            .output(outputFilePath)
+            .save('./out.mp4');
+    })
+}
+
+
+module.exports = { mergeSounds, concatSounds, makeVideo }
