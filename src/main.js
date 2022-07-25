@@ -13,6 +13,8 @@ const rootDirs = fs.readdirSync('./FartMix').slice(1);
 (async () => {
     let count = 0;
     for (var i in rootDirs) {
+        console.log(rootDirs)
+        if (i < 2) continue;
         const dir = './FartMix/' + rootDirs[i]
         const files = fs.readdirSync(dir);
         const videoIndex = _.findIndex(files, (f) => f.indexOf('.mp4') !== -1);
